@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from services.medisearch_service import MedisearchService
 from responses import success_response, error_response
+from config import HOST, PORT
 
 app = Flask(__name__)
 
@@ -25,5 +26,5 @@ def search():
         return jsonify(error_response(str(e))), 500
 
 if __name__ == '__main__':
-    # Arrancamos el servidor en el puerto 5000 con modo debug activo (para desarrollo)
-    app.run(debug=True, port=5000)
+    app.run(host=HOST, port=PORT)
+
